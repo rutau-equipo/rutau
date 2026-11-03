@@ -1,0 +1,8 @@
+# REEMPLAZAR @TU-ORGANIZACION/revisores por el equipo real de GitHub.
+# CODEOWNERS solicita revisiones; para exigir 2 integrantes del equipo,
+# configurar además un ruleset de Required reviewers con 2 aprobaciones.
+* @TU-ORGANIZACION/revisores
+/packages/contracts/ @TU-ORGANIZACION/revisores
+/packages/academic-core/ @TU-ORGANIZACION/revisores
+/packages/plans/ @TU-ORGANIZACION/revisores
+/.github/ @TU-ORGANIZACION/revisores

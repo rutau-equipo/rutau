@@ -1,0 +1,173 @@
+
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RutaU Curriculum v2.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "planId",
+    "planVersion",
+    "institution",
+    "careerId",
+    "careerName",
+    "periodSystem",
+    "source",
+    "courses"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "2.0"
+    },
+    "planId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "planVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "institution": {
+      "type": "string",
+      "minLength": 1
+    },
+    "careerId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "careerName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "periodSystem": {
+      "enum": [
+        "SEMESTER",
+        "TRIMESTER",
+        "QUARTER"
+      ]
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "DEMO",
+            "OFFICIAL_PDF"
+          ]
+        },
+        "url": {
+          "type": "string",
+          "pattern": "^https://"
+        }
+      },
+      "if": {
+        "properties": {
+          "type": {
+            "const": "OFFICIAL_PDF"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "url": true
+        },
+        "required": [
+          "url"
+        ]
+      }
+    },
+    "courses": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/course"
+      }
+    }
+  },
+  "$defs": {
+    "ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "req": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "allOf",
+        "anyOf"
+      ],
+      "properties": {
+        "allOf": {
+          "$ref": "#/$defs/ids"
+        },
+        "anyOf": {
+          "$ref": "#/$defs/ids"
+        }
+      }
+    },
+    "course": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "code",
+        "name",
+        "credits",
+        "recommendedPeriod",
+        "type",
+        "prerequisites",
+        "corequisites"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "credits": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "recommendedPeriod": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "type": {
+          "enum": [
+            "COURSE",
+            "ELECTIVE",
+            "PRACTICE"
+          ]
+        },
+        "hours": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "prerequisites": {
+          "$ref": "#/$defs/req"
+        },
+        "corequisites": {
+          "$ref": "#/$defs/ids"
+        }
+      }
+    }
+  }
+}

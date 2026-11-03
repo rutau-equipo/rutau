@@ -1,0 +1,88 @@
+{
+  "schemaVersion": "2.0",
+  "planId": "DEMO-ISC-2026",
+  "planVersion": "0.1-demo",
+  "institution": "Universidad ficticia (solo demostración)",
+  "careerId": "ISC-DEMO",
+  "careerName": "Ingeniería en Sistemas · Ejemplo",
+  "periodSystem": "TRIMESTER",
+  "source": {
+    "type": "DEMO"
+  },
+  "courses": [
+    {
+      "id": "MAT101",
+      "code": "MAT101",
+      "name": "Matemática I",
+      "credits": 4,
+      "recommendedPeriod": 1,
+      "type": "COURSE",
+      "prerequisites": {
+        "allOf": [],
+        "anyOf": []
+      },
+      "corequisites": []
+    },
+    {
+      "id": "PRO101",
+      "code": "PRO101",
+      "name": "Programación I",
+      "credits": 4,
+      "recommendedPeriod": 1,
+      "type": "COURSE",
+      "prerequisites": {
+        "allOf": [],
+        "anyOf": []
+      },
+      "corequisites": []
+    },
+    {
+      "id": "MAT102",
+      "code": "MAT102",
+      "name": "Matemática II",
+      "credits": 4,
+      "recommendedPeriod": 2,
+      "type": "COURSE",
+      "prerequisites": {
+        "allOf": [
+          "MAT101"
+        ],
+        "anyOf": []
+      },
+      "corequisites": []
+    },
+    {
+      "id": "PRO102",
+      "code": "PRO102",
+      "name": "Programación II",
+      "credits": 4,
+      "recommendedPeriod": 2,
+      "type": "COURSE",
+      "prerequisites": {
+        "allOf": [
+          "PRO101"
+        ],
+        "anyOf": []
+      },
+      "corequisites": [
+        "MAT102"
+      ]
+    },
+    {
+      "id": "ALGO201",
+      "code": "ALGO201",
+      "name": "Algoritmos",
+      "credits": 4,
+      "recommendedPeriod": 3,
+      "type": "COURSE",
+      "prerequisites": {
+        "allOf": [
+          "MAT102",
+          "PRO102"
+        ],
+        "anyOf": []
+      },
+      "corequisites": []
+    }
+  ]
+}

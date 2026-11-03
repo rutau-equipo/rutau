@@ -1,0 +1,16 @@
+{
+  "expo": {
+    "name": "RutaU",
+    "slug": "rutau",
+    "scheme": "rutau",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "android": {
+      "package": "com.rutau.estudiantes"
+    },
+    "ios": {
+      "bundleIdentifier": "com.rutau.estudiantes"
+    }
+  }
+}

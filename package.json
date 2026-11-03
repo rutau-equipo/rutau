@@ -1,0 +1,28 @@
+{
+  "name": "rutau",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Monorepo RutaU: app móvil y módulos académicos",
+  "workspaces": [
+    "apps/*",
+    "packages/contracts",
+    "packages/academic-core",
+    "packages/plans/*"
+  ],
+  "scripts": {
+    "start": "npm run start -w @rutau/mobile",
+    "android": "npm run android -w @rutau/mobile",
+    "validate:plans": "node scripts/validate-plans.mjs",
+    "test": "node --experimental-strip-types --test tests/*.test.mjs",
+    "typecheck": "npm run typecheck -w @rutau/mobile",
+    "check": "npm run validate:plans && npm run test && npm run typecheck"
+  },
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "devDependencies": {
+    "ajv": "^8.17.1",
+    "typescript": "~5.9.2",
+    "@types/react": "~19.2.0"
+  }
+}
